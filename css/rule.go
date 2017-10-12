@@ -20,7 +20,7 @@ const (
 
 // At Rules than have Rules inside their block instead of Declarations
 var atRulesWithRulesBlock = []string{
-	"@document", "@font-feature-values", "@keyframes", "@media", "@supports", "@-webkit-keyframes", "@-moz-keyframes", "@-o-keyframes",
+	"@document", "@font-feature-values", "@keyframes", "@media", "@supports", "@-webkit-keyframes", "@-moz-keyframes", "@-o-keyframes", "@-ms-keyframes",
 }
 
 // Selector represents a parsed CSS selector.
