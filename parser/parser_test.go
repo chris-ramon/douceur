@@ -81,6 +81,33 @@ p > a {
 	MustEqualCSS(t, stylesheet.String(), expectedOutput)
 }
 
+func TestQualifiedRuleWithoutDeclarations(t *testing.T) {
+	input := `.foo {
+}`
+
+	expectedRule := &css.Rule{
+		Kind:    css.QualifiedRule,
+		Prelude: ".foo",
+		Selectors: []*css.Selector{
+			{
+				Value:  ".foo",
+				Line:   1,
+				Column: 1,
+			},
+		},
+		Declarations: []*css.Declaration{},
+	}
+
+	expectedOutput := `.foo {}`
+
+	stylesheet := MustParse(t, input, 1)
+	rule := stylesheet.Rules[0]
+
+	MustEqualRule(t, rule, expectedRule)
+
+	MustEqualCSS(t, stylesheet.String(), expectedOutput)
+}
+
 func TestQualifiedRuleImportant(t *testing.T) {
 	input := `/* This is a comment */
 p > a {
