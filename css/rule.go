@@ -213,7 +213,12 @@ func (rule *Rule) str(diff bool) string {
 	}
 
 	if (len(rule.Declarations) == 0) && (len(rule.Rules) == 0) {
-		result += ";"
+		if rule.Kind == QualifiedRule {
+			result += " {}"
+		} else {
+			// AtRule
+			result += ";"
+		}
 	} else {
 		result += " {\n"
 
